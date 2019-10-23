@@ -40,7 +40,26 @@ while room_count < num_rooms:
         y += 1
         direction *= -1
     # Create a room in the given direction
-    room = Room(room_count, "A Generic Room", "This is a generic room.", x, y)
+    travel = ""
+    if x > 0 and x < size_x - 1:
+        travel = "east and west."
+    if x == 12 and direction > 0:
+        travel = "north and west."
+    if x == 12 and direction < 0:
+        travel = "south and west."
+    if x == 0 and direction < 0:
+        travel = "north and east."
+    if x == 0 and direction > 0:
+        travel = "south and east."
+    if room_count == 0:
+        travel = "east"
+    if room_count == num_rooms-1:
+        if direction < 0:
+            travel = "east"
+        if direction > 0:
+            travel = "west"
+    room = Room(room_count+1, f"Room #{room_count+1}",
+                f"This is room #{room_count+1}. From here you can travel {travel}", x, y)
     # Note that in Django, you'll need to save the room after you create it
     # Save the room in the World grid
     grid[y][x] = room
