@@ -43,9 +43,9 @@ while room_count < num_rooms:
     travel = ""
     if x > 0 and x < size_x - 1:
         travel = "east and west."
-    if x == 12 and direction > 0:
+    if x == size_x - 1 and direction > 0:
         travel = "north and west."
-    if x == 12 and direction < 0:
+    if x == size_x - 1 and direction < 0:
         travel = "south and west."
     if x == 0 and direction < 0:
         travel = "north and east."
